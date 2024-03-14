@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import "../styles/navbar.styles.scss";
+import CartIcon from "./CartIcon";
 
 const NavBar = () => {
   return (
@@ -12,7 +13,6 @@ const NavBar = () => {
             className="logo"
           ></img>
         </Link>
-        {/** Options */}
         <div className="options">
           <Link className="option" to="/shop">
             SHOP
@@ -23,6 +23,7 @@ const NavBar = () => {
           <Link className="option" to="/contact">
             CONTACT
           </Link>
+          <CartIcon />
         </div>
       </div>
     </>

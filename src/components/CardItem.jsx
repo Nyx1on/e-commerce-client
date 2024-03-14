@@ -2,17 +2,18 @@ import { useNavigate } from "react-router-dom";
 import "../styles/cardItem.styles.scss";
 
 const CardItem = ({ menu }) => {
-  console.log(menu);
   let navigate = useNavigate();
   return (
     <>
-      <div className="menu-item">
+      <div
+        className="menu-item"
+        onClick={() => navigate(`/category/${menu.routeName}`)}
+      >
         <div
           className="background-image"
           style={{
-            backgroundImage: `url(${menu.imageUrl})`,
+            backgroundImage: `url(${menu.titleImgUrl})`,
           }}
-          onClick={() => navigate(`/category/${menu.title}`)}
         />
         <div className="content">
           <div className="title">{menu.title.toUpperCase()}</div>
