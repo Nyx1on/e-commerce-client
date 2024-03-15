@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import shopData from "../data/shop.data";
-import CollectionItem from "../components/CollectionItem";
+import CategoryItem from "../components/CategoryItem";
 import "../styles/category.styles.scss";
 
 const Category = () => {
@@ -12,10 +12,19 @@ const Category = () => {
   return (
     <>
       <div className="category-preview">
-        <h1 className="title">{title.toUpperCase()}</h1>
+        <h1
+          className="title"
+          style={{
+            letterSpacing: "2px",
+            fontSize: "2.5rem",
+          }}
+        >
+          BROWSE
+          <div>THE LATEST COLLECTION OF {title.toUpperCase()}</div>
+        </h1>
         <div className="preview">
           {items.map((item) => (
-            <CollectionItem key={id} item={item} />
+            <CategoryItem key={id} item={item} />
           ))}
         </div>
       </div>
