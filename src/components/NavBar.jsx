@@ -6,13 +6,29 @@ const NavBar = () => {
   return (
     <>
       <div className="header">
-        <Link className="logo-container" to="/">
-          <img
-            src="../src/assets/favicon.ico"
-            alt="logo"
-            className="logo"
-          ></img>
-        </Link>
+        <div className="logo-container">
+          <Link
+            className="logo-container"
+            style={{ textDecoration: "none" }}
+            to="/"
+          >
+            <img
+              src="../src/assets/favicon.ico"
+              alt="logo"
+              className="logo"
+            ></img>
+            <div
+              style={{
+                fontSize: "2rem",
+                padding: "0px 20px",
+                color: "black",
+                fontWeight: "500",
+              }}
+            >
+              UK
+            </div>
+          </Link>
+        </div>
         <div className="options">
           <Link className="option" to="/shop">
             SHOP

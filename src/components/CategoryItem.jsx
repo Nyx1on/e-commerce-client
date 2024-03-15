@@ -1,7 +1,7 @@
 import "../styles/collectionItem.styles.scss";
 import Button from "./Button.jsx";
 
-const CollectionItem = ({ item, addItem }) => {
+const CategoryItem = ({ item, addItem }) => {
   const { name, imageUrl, price } = item;
   return (
     <>
@@ -20,4 +20,4 @@ const CollectionItem = ({ item, addItem }) => {
   );
 };
 
-export default CollectionItem;
+export default CategoryItem;
