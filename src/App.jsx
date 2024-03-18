@@ -6,6 +6,7 @@ import Category from "./pages/Category";
 import SignInPage from "./pages/SignInPage";
 import Shop from "./pages/Shop";
 import Contact from "./pages/Contact";
+import Checkout from "./pages/Checkout";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/signin" element={<SignInPage />} />
           <Route path="/category/:id" element={<Category />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/checkout" element={<Checkout />} />
         </Routes>
       </div>
     </>

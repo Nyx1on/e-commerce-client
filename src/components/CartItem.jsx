@@ -1,12 +1,12 @@
 import { useDispatch } from "react-redux";
 import "../styles/cartItem.styles.scss";
-import { removeItem } from "../redux/action/cart.action";
+import { clearItem } from "../redux/action/cart.action";
 
 const CartItem = ({ item }) => {
   const { name, imageUrl, price, quantity } = item;
   const dispatch = useDispatch();
   const handleOnClick = () => {
-    dispatch(removeItem(item));
+    dispatch(clearItem(item));
   };
   return (
     <>
