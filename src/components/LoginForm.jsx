@@ -21,7 +21,7 @@ const LogInForm = () => {
       console.log(res.data);
       const { token } = res.data;
       authClient.storeTokenLocally(token);
-      // authClient.setAuthToken(localStorage.getItem("token"));
+      authClient.setAuthToken(localStorage.getItem("token"));
     } catch (error) {
       console.error("Error logging in user:", error);
     }

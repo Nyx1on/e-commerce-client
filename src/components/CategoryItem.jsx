@@ -1,9 +1,14 @@
-import { connect } from "react-redux";
+import { useDispatch } from "react-redux";
 import "../styles/collectionItem.styles.scss";
 import Button from "./Button.jsx";
+import { addItem } from "../redux/action/cart.action.js";
 
-const CategoryItem = ({ item, addItem }) => {
+const CategoryItem = ({ item }) => {
   const { name, imageUrl, price } = item;
+  const dispatch = useDispatch();
+  const handleAddItem = () => {
+    dispatch(addItem(item));
+  };
   return (
     <>
       <div className="collection-item">
@@ -15,14 +20,10 @@ const CategoryItem = ({ item, addItem }) => {
           <span className="name">{name}</span>
           <span className="price">${price}</span>
         </div>
-        <Button onClick={() => addItem(item)}>Add to Cart</Button>
+        <Button onClick={handleAddItem}>Add to Cart</Button>
       </div>
     </>
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  addItem: (item) => dispatch(addItem(item)),
-});
-
-export default connect(null, mapDispatchToProps)(CategoryItem);
+export default CategoryItem;

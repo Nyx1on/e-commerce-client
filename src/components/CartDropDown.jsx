@@ -1,11 +1,16 @@
 import React from "react";
-import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import "../styles/cartDropDown.scss";
 import Button from "./Button";
+import CartItem from "./CartItem";
+import { useDispatch } from "react-redux";
 
 const CartDropDown = ({ cartItems }) => {
   let navigate = useNavigate();
+ 
+
+
+
   return (
     <>
       <div className="cart-dropdown">
@@ -20,6 +25,4 @@ const CartDropDown = ({ cartItems }) => {
   );
 };
 
-const mapStateToProps = ({ cart: { cartItems } }) => ({ cartItems });
-
-export default connect(mapStateToProps, null)(CartDropDown);
+export default CartDropDown;

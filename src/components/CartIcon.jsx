@@ -7,8 +7,10 @@ import CartDropDown from "./CartDropDown";
 
 const CartIcon = ({ itemCount }) => {
   const [hidden, setHidden] = useState(false);
+  const dispatch = useDispatch();
   const handleDropDown = () => {
     setHidden((prevState) => !prevState);
+    dispatch()
   };
   return (
     <>
