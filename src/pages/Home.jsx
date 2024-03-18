@@ -4,6 +4,7 @@ import "../styles/home.styles.scss";
 import FormInput from "../components/FormInput";
 import { useEffect, useState } from "react";
 import apiClient from "../helpers/apiClient";
+// import authClient from "../helpers/authClient";
 
 const Home = () => {
   const [sections, setSections] = useState(shopData);
@@ -21,11 +22,14 @@ const Home = () => {
 
   useEffect(() => {
     const getProudcts = async () => {
-      const res = await apiClient.get("/products/get-all");
+      // const token = localStorage.getItem("token");
+      // authClient.setAuthToken(token);
+      const res = await apiClient.get("/api/v1/products/get-all");
       console.log(res.data);
     };
     getProudcts();
   }, []);
+
   return (
     <>
       <div className="homepage">

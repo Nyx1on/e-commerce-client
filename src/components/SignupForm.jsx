@@ -26,7 +26,10 @@ const SignupForm = () => {
     }
 
     try {
-      const res = await apiClient.post("/user/registration", newUserData);
+      const res = await apiClient.post(
+        "/api/v1/user/registration",
+        newUserData
+      );
       console.log("User registered successfully", res.data);
       // Handle success
     } catch (error) {
@@ -40,30 +43,13 @@ const SignupForm = () => {
       <h2>I do not have an account</h2>
       <span>Sign up with your email and password</span>
       <form onSubmit={handleSubmit}>
-        <FormInput
-          placeholder="User Name"
-          type="text"
-          ref={userNameRef}
-          // handleChange={this.handleChange}
-        />
-        <FormInput
-          placeholder="Email"
-          type="email"
-          ref={emailRef}
-          // handleChange={this.handleChange}
-        />
-        <input type="text" ref={userNameRef} />
-        <FormInput
-          placeholder="Password"
-          type="password"
-          ref={passwordRef}
-          // handleChange={this.handleChange}
-        />
+        <FormInput placeholder="User Name" type="text" ref={userNameRef} />
+        <FormInput placeholder="Email" type="email" ref={emailRef} />
+        <FormInput placeholder="Password" type="password" ref={passwordRef} />
         <FormInput
           placeholder="Confirm Password"
           type="password"
           ref={confirmPasswordRef}
-          // handleChange={this.handleChange}
         />
         <Button type="submit">Sign Up</Button>
       </form>
