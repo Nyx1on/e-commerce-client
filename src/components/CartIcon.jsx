@@ -2,15 +2,18 @@ import { useState } from "react";
 import ShoppingBag from "../assets/shopping-bag.svg";
 import "../styles/cartIcon.styles.scss";
 
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import CartDropDown from "./CartDropDown";
+import { toggleCartDropdown } from "../redux/action/cart.action";
 
-const CartIcon = ({ itemCount }) => {
+const CartIcon = () => {
   const [hidden, setHidden] = useState(false);
   const dispatch = useDispatch();
+  const itemCount = useSelector((state) => state.cart.cartItems.length);
+
   const handleDropDown = () => {
+    dispatch(toggleCartDropdown());
     setHidden((prevState) => !prevState);
-    dispatch()
   };
   return (
     <>
@@ -23,8 +26,4 @@ const CartIcon = ({ itemCount }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  itemCount: state.cart.cartItems.length,
-});
-
-export default connect(mapStateToProps, null)(CartIcon);
+export default CartIcon;

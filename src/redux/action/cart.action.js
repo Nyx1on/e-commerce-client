@@ -14,3 +14,7 @@ export const clearItem = (item) => ({
   type: CART_ACTION_TYPES.CLEAR_ITEM,
   payload: item,
 });
+
+export const toggleCartDropdown = () => ({
+  type: CART_ACTION_TYPES.TOGGLE_DROPDOWN,
+});
