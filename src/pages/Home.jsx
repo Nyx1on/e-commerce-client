@@ -2,7 +2,8 @@ import shopData from "../data/shop.data";
 import CardList from "../components/CardList";
 import "../styles/home.styles.scss";
 import FormInput from "../components/FormInput";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import apiClient from "../helpers/apiClient";
 
 const Home = () => {
   const [sections, setSections] = useState(shopData);
@@ -17,6 +18,14 @@ const Home = () => {
       })
     );
   };
+
+  useEffect(() => {
+    const getProudcts = async () => {
+      const res = await apiClient.get("/products/get-all");
+      console.log(res.data);
+    };
+    getProudcts();
+  }, []);
   return (
     <>
       <div className="homepage">

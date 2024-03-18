@@ -1,3 +1,4 @@
+import { connect } from "react-redux";
 import "../styles/collectionItem.styles.scss";
 import Button from "./Button.jsx";
 
@@ -20,4 +21,8 @@ const CategoryItem = ({ item, addItem }) => {
   );
 };
 
-export default CategoryItem;
+const mapDispatchToProps = (dispatch) => ({
+  addItem: (item) => dispatch(addItem(item)),
+});
+
+export default connect(null, mapDispatchToProps)(CategoryItem);
