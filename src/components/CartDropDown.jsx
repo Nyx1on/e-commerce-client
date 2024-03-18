@@ -3,14 +3,11 @@ import { useNavigate } from "react-router-dom";
 import "../styles/cartDropDown.scss";
 import Button from "./Button";
 import CartItem from "./CartItem";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
-const CartDropDown = ({ cartItems }) => {
+const CartDropDown = () => {
   let navigate = useNavigate();
- 
-
-
-
+  const cartItems = useSelector((state) => state.cart.cartItems);
   return (
     <>
       <div className="cart-dropdown">
@@ -19,7 +16,7 @@ const CartDropDown = ({ cartItems }) => {
             <CartItem key={idx} item={item} />
           ))}
         </div>
-        <Button onClick={() => navigate("/checkout")}>GOTOCHECKOUT</Button>
+        <Button onClick={() => navigate("/checkout")}>GO TO CHECKOUT</Button>
       </div>
     </>
   );

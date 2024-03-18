@@ -7,6 +7,7 @@ import {
 
 const INITIAL_STATE = {
   cartItems: [],
+  isDropDownVisible: false,
 };
 
 const cartReducer = (state = INITIAL_STATE, action) => {
@@ -14,17 +15,22 @@ const cartReducer = (state = INITIAL_STATE, action) => {
     case CART_ACTION_TYPES.ADD_ITEM:
       return {
         ...state,
-        cartItems: addItemToCart(action.state, action.payload),
+        cartItems: addItemToCart(state.cartItems, action.payload),
       };
     case CART_ACTION_TYPES.REMOVE_ITEM:
       return {
         ...state,
-        cartItems: removeItemFromCart(action.state, action.payload),
+        cartItems: removeItemFromCart(state.cartItems, action.payload),
       };
     case CART_ACTION_TYPES.CLEAR_ITEM:
       return {
         ...state,
-        cartItems: clearItemFromCart(action.state, action.payload),
+        cartItems: clearItemFromCart(state.cartItems, action.payload),
+      };
+    case CART_ACTION_TYPES.TOGGLE_DROPDOWN:
+      return {
+        ...state,
+        isDropDownVisible: !state.isDropDownVisible,
       };
     default:
       return state;
