@@ -1,17 +1,17 @@
-import '../styles/formInput.styles.scss'
+import { forwardRef } from "react";
+import "../styles/formInput.styles.scss";
 
-const FormInput = ({handleChange,...otherProps}) => {
-    return(
-        <div className='group'>
-            <input 
-                {...otherProps}
-                onChange={handleChange}
-                className='form-input'
-            />
-        </div>
-    )
-}
+const FormInput = forwardRef(({ handleChange, ...otherProps }, ref) => {
+  return (
+    <div className="group">
+      <input
+        {...otherProps}
+        ref={ref}
+        onChange={handleChange}
+        className="form-input"
+      />
+    </div>
+  );
+});
 
-
-
-export default FormInput
+export default FormInput;
