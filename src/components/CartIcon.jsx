@@ -13,7 +13,7 @@ const CartIcon = () => {
 
   const handleDropDown = () => {
     dispatch(toggleCartDropdown());
-    setHidden((prevState) => !prevState);
+    setHidden(true);
   };
   return (
     <>
