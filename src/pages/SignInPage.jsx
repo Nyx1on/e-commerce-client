@@ -2,6 +2,7 @@ import React from "react";
 import "../styles/signIn.styles.scss";
 import LogInForm from "../components/LoginForm";
 import SignupForm from "../components/SignupForm";
+import { ToastContainer } from "react-toastify";
 
 const SignInPage = () => {
   return (
@@ -12,6 +13,7 @@ const SignInPage = () => {
       >
         <LogInForm />
         <SignupForm />
+        <ToastContainer />
       </div>
     </>
   );

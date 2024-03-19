@@ -2,10 +2,33 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "../styles/checkoutPage.styles.scss";
 import Button from "../components/Button";
-import { addItem, clearItem, removeItem } from "../redux/action/cart.action";
+import {
+  addItem,
+  clearItem,
+  removeItem,
+} from "../redux/action/cart/cart.action";
 import { FaPlus, FaMinus } from "react-icons/fa";
+import StripeCheckout from "react-stripe-checkout";
+import { useNavigate } from "react-router-dom";
 
 const Checkout = () => {
+  const onToken = (token) => {
+    fetch("/save-stripe-token", {
+      method: "POST",
+      body: JSON.stringify(token),
+    }).then((response) => {
+      response.json().then((data) => {
+        alert(`We are in business, ${data.email}`);
+      });
+    });
+  };
+
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("/shop");
+  };
+
   const dispatch = useDispatch();
   const items = useSelector((state) => state.cart.cartItems);
   const totalPrice = items.reduce(
@@ -27,6 +50,15 @@ const Checkout = () => {
 
   return (
     <div className="checkout-page">
+      <div
+        style={{
+          fontSize: "2.5rem",
+          padding: "0px 0px 40px 0px",
+          fontWeight: "500px",
+        }}
+      >
+        Checkout
+      </div>
       <div className="checkout-header">
         <div className="header-block">
           <span>Product</span>
@@ -76,8 +108,16 @@ const Checkout = () => {
       <div className="total">
         <span>TOTAL: ${totalPrice}</span>
       </div>
-      <div className="checkout-button">
-        <Button>Proceed to Checkout</Button>
+
+      <div className="checkout-button" s>
+        <div style={{ padding: "10px 0px" }}>
+          <Button onClick={handleClick}>Back to Shop</Button>
+        </div>
+        <StripeCheckout
+          token={onToken}
+          stripeKey="pk_test_51OuUubSGWIKCsaAKNCRti2yCmh0VQU675Wzo8d4SkqvkhgTKBr71jGQatJdkVEs38A0rYjoKmtkiDadgVsBBOArS00vWrQghDZ"
+          amount={totalPrice * 100}
+        />
       </div>
     </div>
   );

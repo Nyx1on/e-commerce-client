@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import "../styles/collectionItem.styles.scss";
 import Button from "./Button.jsx";
-import { addItem } from "../redux/action/cart.action.js";
+import { addItem } from "../redux/action/cart/cart.action.js";
 
 const CategoryItem = ({ item }) => {
   const { name, imageUrl, price } = item;

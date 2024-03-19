@@ -4,7 +4,7 @@ import "../styles/cartIcon.styles.scss";
 
 import { useDispatch, useSelector } from "react-redux";
 import CartDropDown from "./CartDropDown";
-import { toggleCartDropdown } from "../redux/action/cart.action";
+import { toggleCartDropdown } from "../redux/action/cart/cart.action";
 
 const CartIcon = () => {
   const [hidden, setHidden] = useState(false);

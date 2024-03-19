@@ -4,10 +4,13 @@ import "../styles/home.styles.scss";
 import FormInput from "../components/FormInput";
 import { useEffect, useState } from "react";
 import apiClient from "../helpers/apiClient";
+import { useSelector } from "react-redux";
 // import authClient from "../helpers/authClient";
 
 const Home = () => {
   const [sections, setSections] = useState(shopData);
+  const user = useSelector((state) => state.user.user);
+  console.log(user);
   const handleChange = (e) => {
     const filter = e.target.value;
     setSections(() =>
@@ -33,7 +36,9 @@ const Home = () => {
   return (
     <>
       <div className="homepage">
-        <h1 style={{ fontSize: "2.5rem" }}>WELCOME TO URBAN KLOTH</h1>
+        <h1 style={{ fontSize: "2.5rem" }}>
+          WELCOME {user ? user.name.toUpperCase() : <span>Guest</span>}
+        </h1>
         <span>
           Your ultimate destination for fashionable finds and trendy attire –
           the epitome of style awaits at our clothing store!

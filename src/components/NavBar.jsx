@@ -1,8 +1,17 @@
 import { Link } from "react-router-dom";
 import "../styles/navbar.styles.scss";
 import CartIcon from "./CartIcon";
+import { useDispatch, useSelector } from "react-redux";
+import { loginFailed } from "../redux/action/user/user.action";
 
 const NavBar = () => {
+  const user = useSelector((state) => state.user.user);
+  const dispatch = useDispatch();
+
+  const handleOnClick = () => {
+    dispatch(loginFailed());
+  };
+
   return (
     <>
       <div className="header">
@@ -33,9 +42,19 @@ const NavBar = () => {
           <Link className="option" to="/shop">
             SHOP
           </Link>
-          <Link className="option" to="/signIn">
-            SIGN IN
-          </Link>
+          {user ? (
+            <>
+              <Link className="option" onClick={handleOnClick}>
+                SIGN OUT
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link className="option" to="/signIn">
+                SIGN IN
+              </Link>
+            </>
+          )}
           <Link className="option" to="/contact">
             CONTACT
           </Link>
