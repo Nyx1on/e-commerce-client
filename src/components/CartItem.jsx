@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import "../styles/cartItem.styles.scss";
-import { clearItem } from "../redux/action/cart.action";
+import { clearItem } from "../redux/action/cart/cart.action";
 
 const CartItem = ({ item }) => {
   const { name, imageUrl, price, quantity } = item;

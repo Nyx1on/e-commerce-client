@@ -1,4 +1,4 @@
-import CART_ACTION_TYPES from "../action/cart.types";
+import CART_ACTION_TYPES from "../../action/cart/cart.types";
 import {
   addItemToCart,
   clearItemFromCart,

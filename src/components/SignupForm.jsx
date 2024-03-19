@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import FormInput from "./FormInput";
 import Button from "./Button";
 import apiClient from "../helpers/apiClient";
+import { toast } from "react-toastify";
 
 const SignupForm = () => {
   const userNameRef = useRef(null);
@@ -22,7 +23,7 @@ const SignupForm = () => {
     console.log(newUserData);
 
     if (newUserData.password1 !== newUserData.password2) {
-      return alert("Passwords do not match");
+      toast.error("Passwords do not match");
     }
 
     try {
@@ -30,7 +31,11 @@ const SignupForm = () => {
         "/api/v1/user/registration",
         newUserData
       );
-      console.log("User registered successfully", res.data);
+      if (res.status == 200) {
+        console.log("User registered successfully", res.data);
+        toast.success("Successfully registered the user");
+      }
+
       // Handle success
     } catch (error) {
       console.error("Error registering user:", error);
